@@ -1,14 +1,16 @@
 n = input().split()
-
+#print(n)
+#s = set(n)
+#print(s)
 l = []
-l1 = []
+s=[]
 for i in n:
     if (i == 'plus'):
-        dig = i.replace('plus', '11')
-        l.append(dig)
+        sign = i.replace('plus', '+')
+        l.append(sign)
     if (i == 'minus'):
-        dig = i.replace('minus', '12')
-        l.append(dig)
+        sign = i.replace('minus', '-')
+        l.append(sign)
     if (i == 'zero'):
         dig = i.replace('zero', '0')
         l.append(dig)
@@ -39,35 +41,29 @@ for i in n:
     if (i == 'nine'):
         dig = i.replace('nine', '9')
         l.append(dig)
+#print(l)   
 
-for i in l:
-    dig = int(i)
-    l1.append(dig)
-  
-b = []
-c=[]
 
-if(l1[0]!=12 and l1[0]!=11):
-    for i in range(len(l1)-1):
-        if (l1[i] == 12):
-            heet = -abs(l1[i+1])
-            b.append(heet)
-        if (l1[i] == 11):
-            heet = l1[i+1]
-            #print(abs, 'abs')
-            c.append(heet)   
-    final=c+b+[l1[0]]  
-    #print(final)
-else:
-    for i in range(len(l1)-1):
-        if (l1[i] == 12):
-            heet = -abs(l1[i+1])
-            b.append(heet)
-        if (l1[i] == 11):
-            heet = l1[i+1]
-            #print(abs, 'abs')
-            c.append(heet)   
-    final=c+b      
+if len(l) % 2 ==0:
+    heet=[]
+    for i in range(0,len(l)-1,2):
+        string= l[i]+l[i+1]
+        heet.append(string)
 
-sum = sum(final)
+
+if len(l) % 2 !=0:
+    heet=[l[0]]
+    #print(heet)
+    for i in range(1,len(l)-1,2):
+        string= l[i]+l[i+1]
+        heet.append(string)
+        
+#print(heet)   
+
+vishwa=list(map(int,heet))
+#print(vishwa)
+
+sum=0
+for i in range (len(vishwa)):
+    sum=sum+vishwa[i]
 print(sum)
